@@ -1,0 +1,47 @@
+<%- include('header') %>
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>Comparison Result</h1>
+    </section>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Attribute</th>
+                    <% products.forEach(function(prd) { %>
+                        <th><%= prd.name %></th>
+                    <% }) %>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Brand</td>
+                    <% products.forEach(function(prd) { %>
+                        <td><%= prd.cname %></td>
+                    <% }) %>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <% products.forEach(function(prd) { %>
+                        <td><%= prd.price %></td>
+                    <% }) %>
+                </tr>
+                <tr>
+                    <td>Image</td>
+                    <% products.forEach(function(prd) { %>
+                        <td><img src="<%= prd.image1 %>" alt="<%= prd.name %>" width="100"></td>
+                    <% }) %>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <% products.forEach(function(prd) { %>
+                        <td><%= prd.discribe %></td>
+                    <% }) %>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<%- include('footer') %>

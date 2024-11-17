@@ -1,0 +1,177 @@
+<%- include('header') %>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Dashboard</h1>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </div>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <!-- Row 1: Info Boxes -->
+      <div class="row">
+        <!-- Box 1: Tổng Doanh Thu -->
+        <div class="col-lg-3 col-6">
+          <div class="info-box bg-success">
+            <span class="info-box-icon"><i class="fas fa-dollar-sign"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Tổng Doanh Thu</span>
+              <span class="info-box-number">500,000,000 VND</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Box 2: Tổng Số Lượng Sản Phẩm -->
+        <div class="col-lg-3 col-6">
+          <div class="info-box bg-info">
+            <span class="info-box-icon"><i class="fas fa-cogs"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Tổng Số Sản Phẩm</span>
+              <span class="info-box-number">150</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Box 3: % Lượng Sản Phẩm Đã Bán -->
+        <div class="col-lg-3 col-6">
+          <div class="info-box bg-warning">
+            <span class="info-box-icon"><i class="fas fa-chart-line"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">% Sản Phẩm Đã Bán</span>
+              <span class="info-box-number">75%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Box 4: Số Lượng Đơn Hàng -->
+        <div class="col-lg-3 col-6">
+          <div class="info-box bg-danger">
+            <span class="info-box-icon"><i class="fas fa-box"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Số Lượng Đơn Hàng</span>
+              <span class="info-box-number">300</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Charts -->
+      <div class="row">
+        <!-- Biểu đồ Traffic Sources -->
+        <div class="col-lg-8">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Traffic Sources</h3>
+            </div>
+            <div class="card-body">
+              <canvas id="trafficChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Biểu đồ Income -->
+        <div class="col-lg-4">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Income</h3>
+            </div>
+            <div class="card-body">
+              <canvas id="incomeChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3: Target Section -->
+      <div class="row">
+        <div class="col-lg-3 col-6">
+          <div class="info-box bg-danger">
+            <span class="info-box-text">Income Target</span>
+            <span class="info-box-number">71%</span>
+          </div>
+        </div>
+        <div class="col-lg-3 col-6">
+          <div class="info-box bg-success">
+            <span class="info-box-text">Expenses Target</span>
+            <span class="info-box-number">54%</span>
+          </div>
+        </div>
+        <div class="col-lg-3 col-6">
+          <div class="info-box bg-warning">
+            <span class="info-box-text">Spending Target</span>
+            <span class="info-box-number">32%</span>
+          </div>
+        </div>
+        <div class="col-lg-3 col-6">
+          <div class="info-box bg-info">
+            <span class="info-box-text">Totals Target</span>
+            <span class="info-box-number">89%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<%- include('footer') %>
+
+<!-- JS Scripts for Charts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Biểu đồ Traffic Sources
+  const trafficCtx = document.getElementById('trafficChart').getContext('2d');
+  new Chart(trafficCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Jan 01', 'Jan 02', 'Jan 03', 'Jan 04', 'Jan 05'],
+      datasets: [
+        {
+          label: 'Website Blog',
+          data: [400, 300, 200, 500, 600],
+          backgroundColor: 'rgba(54, 162, 235, 0.6)',
+        },
+        {
+          label: 'Social Media',
+          data: [300, 200, 100, 400, 500],
+          backgroundColor: 'rgba(255, 99, 132, 0.6)',
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'top' },
+        title: { display: true, text: 'Traffic Sources' },
+      },
+    },
+  });
+
+  // Biểu đồ Income
+  const incomeCtx = document.getElementById('incomeChart').getContext('2d');
+  new Chart(incomeCtx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Income Target', 'Remaining'],
+      datasets: [
+        {
+          data: [75, 25],
+          backgroundColor: ['rgba(75, 192, 192, 0.6)', 'rgba(201, 203, 207, 0.6)'],
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'top' },
+        title: { display: true, text: 'Income' },
+      },
+    },
+  });
+</script>
+
