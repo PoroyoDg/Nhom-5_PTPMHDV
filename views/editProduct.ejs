@@ -1,0 +1,92 @@
+<%- include ('header')%>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Edit Product</h1>
+            <hr>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Edit Product</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form action ="" method="POST" role="form" enctype="multipart/form-data">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Product name</label>
+                  <input type="text" name="name" class="form-control"  placeholder="Product name" value="<%= prd.name %>">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Product brand</label>
+                  <select class="form-control" name="brand_id" id="">
+                  <% br.map((brand) => { %>
+                    <option value="<%=brand.id%>" <%= brand.id == prd.brand_id ? 'selected' : '' %>><%= brand.name %></option>
+                  <% }) %>
+                  </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Product price</label>
+                    <input type="text" name="price" class="form-control" placeholder="Product price" value="<%= prd.price %>">
+                  </div>
+                <div class="form-group">
+                  <label for="exampleInputFile">Product Image</label>
+                  <div class="input-group">
+                    <div class="custom-file">
+                      <input type="file" onchange="showImage(this)" name="image" class="custom-file-input" id="exampleInputFile" value="<%= prd.image1 %>">
+                      <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                    </div>
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="">Upload</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% if(prd.id > 90 ){ %>
+                  <div class="col-md-4">
+                    <a href="" class="thumbnail">
+                      <img id="pro-img" src="image/<%=prd.image1%>" alt="">
+                    </a>
+                  </div>
+              <%} else{ %>
+                  <div class="col-md-4">
+                    <a href="" class="thumbnail">
+                      <img id="pro-img" src="<%=prd.image1%>" alt="">
+                    </a>
+                  </div>
+              <%} %>
+              <!-- /.card-body -->
+
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary"><i class = "fa fa-edit"></i> Edit</button>
+                <a href="/products" class="btn btn-danger"><i class = "fa fa-arrow-left"></i> Exit</a>
+              </div>
+            </form>
+          </div>
+          <!-- /.card -->
+    </section>
+</div>
+  <%- include ('footer')%>
+  <script>
+    function showImage(input){
+      if(input.files && input.files[0]){
+        var reader = new FileReader();
+        reader.onload = function(e){
+          $('#pro-img').attr('src', e.target.result);
+  
+        };
+        reader.readAsDataURL(input.files[0]); 
+      }
+    }
+  </script>

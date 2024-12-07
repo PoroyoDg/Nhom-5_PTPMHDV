@@ -1,0 +1,82 @@
+<%- include('header') %>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Dashboard</h1>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </div>
+
+  <!-- Main content -->
+  <section class="content">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; color: #333; }
+        .dashboard { width: 80%; margin: 30px auto; padding: 20px; background-color: white; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); border-radius: 10px; }
+        .dashboard h1 { text-align: center; font-size: 36px; margin-bottom: 20px; color: #2c3e50; }
+        .statistics { display: flex; justify-content: space-around; margin-bottom: 40px; }
+        .stat { background-color: #ecf0f1; padding: 20px; border-radius: 10px; text-align: center; width: 30%; }
+        .stat h3 { font-size: 18px; margin-bottom: 10px; }
+        .stat p { font-size: 24px; font-weight: bold; color: #2980b9; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        table th, table td { padding: 12px; text-align: left; border: 1px solid #ddd; }
+        table th { background-color: #2980b9; color: white; }
+        table tr:nth-child(even) { background-color: #f9f9f9; }
+        table tr:hover { background-color: #f1f1f1; }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Welcome to Admin Dashboard</h1>
+
+        <div class="statistics">
+            <div class="stat">
+                <h3>Total Users</h3>
+                <p><%= totalUsers %></p>
+            </div>
+            <div class="stat">
+                <h3>Total Products</h3>
+                <p><%= totalProducts %></p>
+            </div>
+            <div class="stat">
+                <h3>Total Revenue</h3>
+                <p><%= totalRevenue %> VND</p>
+            </div>
+        </div>
+
+        <h2>Top 5 Best-Selling Products</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Units Sold</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% topProducts.forEach(function(product) { %>
+                    <tr>
+                        <td><%= product.name %></td>
+                        <td><%= product.sold %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+  </section>
+</div>
+<%- include('footer') %>
+
