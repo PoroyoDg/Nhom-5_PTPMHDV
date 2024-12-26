@@ -8,4 +8,6 @@ module.exports = function(app){
     app.get('/addProduct', productCtrl.create);
     app.post('/addProduct', upload.single('image'), productCtrl.store);
     app.get('/productView/:id',productCtrl.details );
+
+    
 }

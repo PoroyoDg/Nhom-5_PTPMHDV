@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const sessionStorage = require('node-sessionstorage');
 const { render } = require('ejs');
 
+const cors = require('cors');
+app.use(cors());
 app.use(bodyParser.urlencoded({
     extended:false
 }));

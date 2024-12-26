@@ -38,10 +38,62 @@
                         <td><%= prd.discribe %></td>
                     <% }) %>
                 </tr>
+                <tr>
+                    <td>Screen</td>
+                    <% products.forEach(function(prd) { %>
+                        <td><%= prd.cscreen %></td>
+                    <% }) %>
+                </tr>
+                <tr>
+                    <td>Chipset</td>
+                    <% products.forEach(function(prd) { %>
+                        <td><%= prd.cchipset %></td>
+                    <% }) %>
+                </tr>
+                <tr>
+                    <td>RAM & Storage</td>
+                    <% products.forEach(function(prd) { %>
+                        <td><%= prd.cram_storage %></td>
+                    <% }) %>
+                </tr>
+                <tr>
+                    <td>Battery</td>
+                    <% products.forEach(function(prd) { %>
+                        <td><%= prd.cbattery %></td>
+                    <% }) %>
+                </tr>
+                <tr>
+                    <td>Connectivity</td>
+                    <% products.forEach(function(prd) { %>
+                        <td><%= prd.cconnectivity %></td>
+                    <% }) %>
+                </tr>
+                <tr>
+                    <td>Water & Dust Resistance</td>
+                    <% products.forEach(function(prd) { %>
+                        <td><%= prd.cwater_dust_resistance %></td>
+                    <% }) %>
+                </tr>
+                <tr>
+                    <td>Camera</td>
+                    <% products.forEach(function(prd) { %>
+                        <td><%= prd.ccamera %></td>
+                    <% }) %>
+                </tr>
+                <tr>
+                    <td>Operating System</td>
+                    <% products.forEach(function(prd) { %>
+                        <td><%= prd.cos %></td>
+                    <% }) %>
+                </tr>
+                <tr>
+                    <td>Audio</td>
+                    <% products.forEach(function(prd) { %>
+                        <td><%= prd.caudio %></td>
+                    <% }) %>
+                </tr>
             </tbody>
         </table>
     </div>
 </div>
-
-
 <%- include('footer') %>

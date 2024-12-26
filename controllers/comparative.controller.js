@@ -39,16 +39,29 @@ exports.compare = function (req, res) {
         p.price, 
         p.image1, 
         p.discribe, 
-        c.name as cname 
+        c.name as cname,
+        ps.screen as cscreen,
+        ps.chipset as cchipset,
+        ps.ram_storage as cram_storage,
+        ps.battery as cbattery,
+        ps.connectivity as cconnectivity,
+        ps.water_dust_resistance as cwater_dust_resistance,
+        ps.camera as ccamera,
+        ps.os as cos,
+        ps.audio as caudio
     FROM 
         product p 
     JOIN 
-        brand c 
-    ON 
-        p.brand_id = c.id 
+        brand c ON p.brand_id = c.id 
+    JOIN 
+        product_specs ps ON p.id = ps.product_id
     WHERE 
         p.id IN (${placeholders})
-`;
+    `;
+
+
+
+
     ketnoi.query(sql, selectedIds, (err, results) => {
         if (err) {
             console.error('Lỗi truy vấn CSDL:', err);

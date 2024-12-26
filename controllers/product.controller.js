@@ -137,3 +137,5 @@ exports.details = (req,res) => {
 
     })
 }
+
+
